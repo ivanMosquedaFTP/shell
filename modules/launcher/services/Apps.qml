@@ -12,15 +12,9 @@ Searcher {
         appDb.incrementFrequency(entry.id);
 
         if (entry.runInTerminal)
-            Quickshell.execDetached({
-                command: ["app2unit", "--", ...Config.general.apps.terminal, `${Quickshell.shellDir}/assets/wrap_term_launch.sh`, ...entry.command],
-                workingDirectory: entry.workingDirectory
-            });
+            Launch.execTerminal(entry.command, entry.workingDirectory);
         else
-            Quickshell.execDetached({
-                command: ["app2unit", "--", ...entry.command],
-                workingDirectory: entry.workingDirectory
-            });
+            Launch.exec(entry.command, entry.workingDirectory);
     }
 
     function search(search: string): list<var> {

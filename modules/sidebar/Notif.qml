@@ -143,7 +143,7 @@ StyledRect {
             wrapMode: Text.WordWrap
 
             onLinkActivated: link => {
-                Quickshell.execDetached(["app2unit", "-O", "--", link]);
+                Launch.open(link);
                 root.visibilities.sidebar = false;
             }
         }
